@@ -1,0 +1,12 @@
+
+<div class="row mt-3">
+  <div class="d-flex justify-content-center shadow">
+      <%= simple_form_for(@list) do |f|%>
+        <div class="container p-3 d-flex flex-column align-items-center">
+          <h3 class = "w-100 bg-dark text-light text-center mb-3">New List</h3>
+          <%= f.input :name, class: "form-control m-3", placeholder: "List Name" %>
+          <%= f.button :submit, class: "btn-primary" %>
+        </div>
+      <% end %>
+  </div>
+</div>

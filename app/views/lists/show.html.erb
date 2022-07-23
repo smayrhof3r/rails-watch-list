@@ -1,0 +1,33 @@
+<div class="container">
+  <h1><%= @list.name %></h1>
+  <div class="row">
+    <% @list.bookmarks.each do |bookmark| %>
+        <div class="col-sm-12 col-md-6">
+          <div class="card m-3 shadow">
+            <img src="https://image.tmdb.org/t/p/w500/<%= bookmark.movie.poster_url %>" alt="" class="card-img">
+            <div class="card-body p-1">
+              <div class="card-header d-flex justify-content-between text-sm">
+                <h4 class="card-title text-dark"><%= bookmark.movie.title %> </h4>
+                <div class="card-rating text-info">
+                  <% bookmark.movie.rating.to_i.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5-bookmark.movie.rating.to_i).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card-text text-sm text-muted">
+                <%= bookmark.movie.overview %>
+              </div>
+              <div class="card-footer d-flex justify-content-between">
+                <p class="text-dark text-strong"><i class="fas fa-quote-left"></i> <%= bookmark.comment %> <i class="fas fa-quote-right"></i></p>
+                <%= link_to "remove from list", list_bookmark_path(@list, bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none text-warning" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>

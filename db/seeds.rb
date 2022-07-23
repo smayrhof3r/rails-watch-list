@@ -36,7 +36,7 @@ genres.each { |genre|
         title: movie_data["title"],
         overview: movie_data["overview"],
         poster_url: movie_data["poster_path"],
-        rating: movie_data["vote_average"]
+        rating: movie_data["vote_average"]/2
       )
       Bookmark.create(
         movie_id: movie.id,
