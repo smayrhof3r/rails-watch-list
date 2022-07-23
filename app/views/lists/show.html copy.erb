@@ -1,0 +1,51 @@
+<div class="container">
+  <h1 class = "mt-3 border-bottom"><%= @list.name %></h1>
+  <div class="row my-3 py-3">
+    <% @list.bookmarks.each do |bookmark| %>
+        <div class="card-product">
+          <img src="https://image.tmdb.org/t/p/w500/<%= bookmark.movie.poster_url %>" />
+          <div class="card-product-infos">
+            <h2><%= bookmark.movie.title%></h2>
+            <div class="card-rating text-info">
+              <% bookmark.movie.rating.to_i.times do %>
+                <i class="fas fa-star"></i>
+              <% end %>
+              <% (5-bookmark.movie.rating.to_i).times do %>
+                <i class="far fa-star"></i>
+              <% end %>
+            </div>
+            <p class="text-dark text-strong"><i class="fas fa-quote-left"></i> <%= bookmark.comment %> <i class="fas fa-quote-right"></i></p>
+            <p><%= bookmark.movie.overview %></p>
+            <%= link_to "remove from list", list_bookmark_path(@list, bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none text-warning" %>
+          </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6">
+          <div class="card h-100 m-3 shadow rounded">
+            <img src="https://image.tmdb.org/t/p/w500/<%= bookmark.movie.poster_url %>" alt="" class="card-img">
+            <div class="card-body p-1">
+              <div class="card-header d-flex justify-content-between text-sm">
+                <h4 class="card-title text-dark"><%= bookmark.movie.title %> </h4>
+                <div class="card-rating text-info">
+                  <% bookmark.movie.rating.to_i.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+                  <% (5-bookmark.movie.rating.to_i).times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card-text text-sm text-muted">
+                <%= bookmark.movie.overview %>
+              </div>
+              <div class="card-footer d-flex justify-content-between">
+                <p class="text-dark text-strong"><i class="fas fa-quote-left"></i> <%= bookmark.comment %> <i class="fas fa-quote-right"></i></p>
+                <%= link_to "remove from list", list_bookmark_path(@list, bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "text-decoration-none text-warning" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>
