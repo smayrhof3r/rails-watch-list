@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top bg-dark text-light text-lg p-2 d-flex justify-content-between">
+<nav class="navbar sticky-top bg-dark text-light text-lg p-2 d-flex justify-content-between" data-controller="navbar" data-action="scroll@window->navbar#updateNavbar">
   <a href="<%= lists_path %>" class = "p-0 m-0 text-decoration-none text-light"><i class="fa fa-home-alt"></i></a>
   <% if @list && @list.persisted? %>
     <%= link_to 'Delete List', list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-outline-light" %>

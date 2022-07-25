@@ -16,7 +16,6 @@ class ListsController < ApplicationController
     if l.save
       redirect_to lists_path
     else
-      raise
       render :new, status: :unprocessable_entity
     end
   end
