@@ -1,8 +1,7 @@
 class BookmarksController < ApplicationController
   def destroy
     Bookmark.find(params[:id]).delete
-
-    redirect_to list_path(params[:list_id])
+    redirect_to list_path(params[:list_id]), status: :see_other
   end
 
   def new
@@ -14,7 +13,7 @@ class BookmarksController < ApplicationController
     b = Bookmark.new(bookmark_params)
     b.list_id = params[:list_id]
     if b.save
-      redirect_to list_path(List.find(b.list_id))
+      redirect_to list_path(List.find(b.list_id)), status: :see_other
     else
       render :new, status: :unprocessable_entity
     end

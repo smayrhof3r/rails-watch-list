@@ -17,7 +17,7 @@ export default class extends Controller {
   }
 
   updateNavbar() {
-    if (window.scrollY >= window.innerHeight) {
+    if (window.scrollY >= 0.5 * window.innerHeight) {
       this.classes.forEach((c) => {
         this.element.classList.add(c)
       })
