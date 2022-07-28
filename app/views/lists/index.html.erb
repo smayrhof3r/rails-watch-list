@@ -5,7 +5,9 @@
     <% @lists.each do |list| %>
         <a class = "text-decoration-none col-12 col-sm-6 col-md-4 col-lg-3" href= "<%=list_path(list) %>" >
           <div class="card card-height-sm bg-dark text-white m-3">
-            <% if list.movies.count > 0 %>
+            <% if list.photo.attached? %>
+              <%= cl_image_tag list.photo.key, crop: :fill %>
+            <% elsif list.movies.count > 0 %>
               <img src="https://image.tmdb.org/t/p/w500/<%= list.movies.first.poster_url %>" alt="" class="card-img">
             <% end %>
             <div class="card-img-overlay card-img-dark d-flex align-items-center justify-content-center">
